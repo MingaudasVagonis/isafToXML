@@ -4,6 +4,6 @@
 
 ![main-window](images/screenshot-main.png)
 
-### To define how the data in the excel file is layed out one must create a data profile
+### To define how the data in the excel file is layed out one must create a data profile which is saved where the jar is
 
 ![profile-window](images/screenshot-profile.png)
