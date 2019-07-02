@@ -88,8 +88,8 @@ class NodeHandler {
     private fun sourceBase(invoice: Element, properties: HashMap<String, Any?>, accountDate: Boolean = false , vat2: Boolean = false){
         node(invoice, "InvoiceDate", properties["InvoiceDate"])
         node(invoice, "InvoiceType", "SF")
-        node(invoice, "SpecialTaxation")
-        node(invoice, "References")
+        node(invoice, "SpecialTaxation", null)
+        node(invoice, "References", null)
         node(invoice, "VATPointDate", properties["InvoiceDate"])
         if(accountDate)
             node(invoice, "RegistrationAccountDate", properties["InvoiceDate"])
