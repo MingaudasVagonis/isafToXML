@@ -61,18 +61,21 @@ open class Invoice(row: Row, evaluator: FormulaEvaluator, profile: List<String>)
         }
 
 
-    fun valid() : Boolean = !properties.containsValue(FLAG_FAILED) && properties["InvoiceNo"] != null && valid
+    fun valid() : Boolean = !properties.containsValue(FLAG_FAILED) && properties.containsKey("Name") && properties.containsKey("InvoiceNo") && valid
 
     /**
      * Processing parsed properties
      */
     private fun process(){
         properties.forEach{ (key, value) ->
-            when(key){
-                /* Numbers from cells are parsed as duobles, removing .0 from string */
-                "InvoiceNo" -> if( value is String) properties[key] = value.split(".").first() else properties[key] = (properties[key] as Double).toInt()
+            properties[key] = when(key){
                 /* Creating total's node for PVM properties */
-                "PVM1","PVM2","PVM25" -> properties[key] = createTaxable(key,value as Double)
+                "PVM1","PVM2","PVM25" -> if(value is Double) createTaxable(key,value) else FLAG_FAILED
+                "InvoiceNo" ->
+                    if (value is String)
+                        value.toDoubleOrNull()?.run{ this.toInt() }?:run { FLAG_FAILED }
+                    else (value as Double).toInt()
+                else -> value
             }
         }
     }
