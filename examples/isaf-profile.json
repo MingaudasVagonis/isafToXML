@@ -1,0 +1,23 @@
+{
+  "id": "regnum123",
+  "optionsSale": [
+    "InvoiceNo",
+    "Skip: 1",
+    "Name",
+    "InvoiceDate",
+    "Total",
+    "Skip: 2",
+    "Skip: 3",
+    "Skip: 4",
+    "PVM1",
+    "Skip: 5",
+    "PVM2"
+  ],
+  "optionsPurchase": [
+    "InvoiceDate",
+    "InvoiceNo",
+    "Name",
+    "VATRegistrationNumber",
+    "PVM1"
+  ]
+}
