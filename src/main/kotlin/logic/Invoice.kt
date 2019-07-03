@@ -8,6 +8,7 @@ import java.math.BigDecimal
 import java.math.RoundingMode
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.regex.Pattern
 import kotlin.collections.HashMap
 import kotlin.collections.LinkedHashMap
 
@@ -73,7 +74,7 @@ open class Invoice(row: Row, evaluator: FormulaEvaluator, profile: List<String>)
                 "PVM1","PVM2","PVM25" -> if(value is Double) createTaxable(key,value) else FLAG_FAILED
                 "InvoiceNo" ->
                     if (value is String)
-                        value.toDoubleOrNull()?.run{ this.toInt() }?:run { FLAG_FAILED }
+                        value.toDoubleOrNull()?.run{ this.toInt() }?:run { if(Pattern.compile( "[0-9]" ).matcher(value).find()) value else FLAG_FAILED }
                     else (value as Double).toInt()
                 else -> value
             }
