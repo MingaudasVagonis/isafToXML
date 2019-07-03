@@ -112,7 +112,7 @@ class ProfileController : Controller(){
         const val DELETE = "del"
         const val ADD = "add"
         private const val fileName = "isaf-profile.json"
-        private fun profileFile() : File = File(MainWindow::class.java.protectionDomain.codeSource.location.toURI().path, fileName)
+        private fun profileFile() : File = File("${MainWindow::class.java.protectionDomain.codeSource.location.toURI().path.replace("\\","/").split("/").dropLast(1).joinToString(separator = "/")}/", fileName)
         fun profileExists() : Boolean = profileFile().exists()
         fun profile() : Profile {
             val reader = JsonReader(FileReader(profileFile()))
