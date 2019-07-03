@@ -1,6 +1,6 @@
 # isafToXML
 
-## Parses an xlsx (excel) file into an appropriate isaf formatted XML file
+## Parses an xlsx (excel) file into an appropriate [isaf](https://imas.vmi.lt/isaf/aboutIsaf/) formatted XML file
 
 ![main-window](images/screenshot-main.png)
 
